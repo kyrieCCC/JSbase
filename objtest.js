@@ -39,3 +39,8 @@ const myObj2 = {
 const myObj3 = JSON.parse(JSON.stringify(myObj))
 console.log(myObj3)
 console.log(myObj2)
+
+const aa = (a, b) => {return a + b};
+ 
+
+console.log(aa(1, 2))
