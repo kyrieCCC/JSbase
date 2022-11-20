@@ -76,16 +76,16 @@ console.log("---------------------这是队列1--------------------");
 
 const Queue2 = function () {
   const arr = [];
-  this.size = function () {
+  this.size = () => {
     return arr.length;
   };
-  this.add = function (item) {
+  this.add = (item) => {
     arr.push(item);
   };
-  this.remove = function () {
+  this.remove = () => {
     return arr.shift();
   };
-  this.getValue = function () {
+  this.getValue = () => {
     return arr;
   };
 };
