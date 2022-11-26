@@ -11,9 +11,9 @@ Object.prototype.myCall = function (...arg) {
     const obj = arg.slice(0, 1)
     const arr = arg.slice(1)
     const self = this
-    obj.ppp = self
-    const res = obj.ppp(...arr)
-    delete obj.ppp
+    obj.fn = self
+    const res = obj.fn(...arr)
+    delete obj.fn
     return res
 }
 // ppp()
