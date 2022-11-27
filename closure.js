@@ -7,7 +7,15 @@ for (i = 0; i < 5; i++){
     fn.push(j)
 }
 fn[0]()
-
+Object.prototype.myCall = function (...arg) {
+    const obj = arg.slice(0, 1)
+    const arr = arg.slice(1)
+    const self = this
+    obj.fn = self
+    const res = obj.fn(...arr)
+    delete obj.fn
+    return res
+}
 const fn1 = []
 for (i = 0; i < 5; i++){
     const j = (function (num) {
