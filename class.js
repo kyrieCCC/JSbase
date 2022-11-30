@@ -23,11 +23,8 @@ newPerson.getName()
 
 
 class littlePerson extends person {
-    name;
-    age;
-    height;
-    constructor() {
-        super()
+    constructor(name, age, height) {
+        super(name, age, height)
     }
     getNewAge() {
         console.log(this.age)
