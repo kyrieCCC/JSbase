@@ -33,3 +33,4 @@ class littlePerson extends person {
 
 const ppp = new littlePerson('ph', '18', 165)
 console.log(ppp)
+ppp.getNewAge()
