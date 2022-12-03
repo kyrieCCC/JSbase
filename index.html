@@ -1,27 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>axios</title>
-</head>
-<body>
+  </head>
+  <body>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        axios({
-            headers: {
-                Authorization: `APPCODE bfdf608a21844ab79259f2ce73fb7b1b`},
-            method: 'get',
-            url: `https://jisutqybmf.market.alicloudapi.com/weather/query`,
-            params: {
-                city: '镇江',
-            }
-        }).then((res) => {
-            console.log('这是成功信息', res.data.result)
-        }).catch(error => {
-            console.log('这是错误信息', error)
-        })
+      function weatherTask(city) {
+        const resTask = axios({
+          headers: {
+            Authorization: `APPCODE bfdf608a21844ab79259f2ce73fb7b1b`,
+          },
+          method: "get",
+          url: `https://jisutqybmf.market.alicloudapi.com/weather/query`,
+          params: {
+            city,
+          },
+        });
+        return resTask;
+      }
+      // .then((res) => {
+      //   console.log("这是成功信息", res.data.result);
+      // })
+      // .catch((error) => {
+      //   console.log("这是错误信息", error);
+      // });
+
+      const promise = [
+        weatherTask("镇江"),
+        weatherTask("三亚"),
+        weatherTask("嘉兴"),
+      ];
+      function myPromiseAll(promiseTask) {
+        const result = [];
+        let count = 0
+        return new Promise((resolve, reject) => {
+          promiseTask.forEach((promiseItem) => {
+            promiseItem.then((res) => {
+                result.push(res);
+                count += 1
+                if (count === promise.length) {
+                  resolve(result)
+                }
+              }).catch(reject);
+          });
+        });
+      }
+      myPromiseAll(promise).then(res => console.log(res));
     </script>
-</body>
+  </body>
 </html>
