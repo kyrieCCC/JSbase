@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axios</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        axios({
+            headers: {
+                Authorization: `APPCODE bfdf608a21844ab79259f2ce73fb7b1b`},
+            method: 'get',
+            url: `https://jisutqybmf.market.alicloudapi.com/weather/query`,
+            params: {
+                city: '镇江',
+            }
+        }).then((res) => {
+            console.log('这是成功信息', res.data.result)
+        }).catch(error => {
+            console.log('这是错误信息', error)
+        })
+    </script>
+</body>
+</html>
