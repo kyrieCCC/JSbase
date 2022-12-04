@@ -1,8 +1,8 @@
-async function sync() {
+async function sync(msg) {
     setTimeout(() => {
-        console.log('我是一个异步函数')
+        console.log('msg是', msg)
     }, 1000)
     console.log('我是同步函数')
 }
-sync()
+const a = await sync()
 console.log('我也是同步函数')
